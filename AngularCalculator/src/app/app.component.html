@@ -1,0 +1,46 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div class="container calculator">
+  <div class="row container_operations">
+    <div class="col operations">
+      <p>{{operations}}</p>
+    </div>
+  </div>
+  <div class="row container_total">
+    <div class="col total">
+      <p>{{total}}</p>
+    </div>
+  </div>
+  <div class="row keys">
+    <div class="col numbers">
+      <button (click) = "keyPressed('9')">9</button>
+      <button (click) = "keyPressed('8')">8</button>
+      <button (click) = "keyPressed('7')">7</button>
+      <button (click) = "keyPressed('6')">6</button>
+      <button (click) = "keyPressed('5')">5</button>
+      <button (click) = "keyPressed('4')">4</button>
+      <button (click) = "keyPressed('3')">3</button>
+      <button (click) = "keyPressed('2')">2</button>
+      <button (click) = "keyPressed('1')">1</button>
+      <button (click) = "keyPressed('.')">.</button>
+      <button (click) = "keyPressed('0')">0</button>
+      <button (click) = "keyPressed('00')">00</button>
+    </div>
+    <div class="col operators">
+      <button (click) = "keyPressed('C')">DEL</button>
+      <button (click) = "keyPressed('/')">/</button>
+      <button (click) = "keyPressed('*')">X</button>
+      <button (click) = "keyPressed('-')">-</button>
+      <button (click) = "keyPressed('+')">+</button>
+      <button (click) = "keyPressed('=')">=</button>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

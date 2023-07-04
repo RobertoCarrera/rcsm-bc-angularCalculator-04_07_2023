@@ -1,0 +1,103 @@
+body{
+
+    background-color: aquamarine;
+}
+
+.calculator{
+
+    background-color: aquamarine;
+
+    max-width: 25vw;
+
+    margin-top: 10em;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.container_operations{
+
+    height: 8vh;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: beige;
+} 
+
+.container_total{
+
+    height: 8vh;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: beige;
+}
+
+.operations, .total{
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    color: rgb(114, 104, 104);
+}
+
+.operations p{
+
+    margin: 0;
+
+    font-size: 3em;
+}
+
+.total p{
+
+    font-size: 2em;
+}
+
+.keys{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.numbers button, .operators button{
+
+    border: none;
+
+    color: white;
+    font-weight:600;
+    font-size: 2em;
+}
+
+.numbers{
+
+    background-color: rgb(114, 104, 104);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.numbers button{
+
+    background-color: rgb(114, 104, 104);
+
+    height: 12vh;
+    width: 6vw;
+}
+
+.operators{
+
+    background-color: rgb(91, 212, 172);
+
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.operators button{
+
+    background-color: rgb(91, 212, 172);
+
+    height: 8vh;
+}
