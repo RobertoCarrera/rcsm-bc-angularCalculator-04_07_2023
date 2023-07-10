@@ -15,14 +15,35 @@ export class AppComponent {
   operatorCounter = 0;
   vuelta = 0;
 
-  updateTotal(newValue: string){
+  mostrarValores(){
 
-    this.total += newValue;
+    console.log(" Vueltas: "+this.vuelta+" Total: "+this.total+"Operations: "+this.operations+" Float: "+this.floatCounter+" Operator: "+this.operator+
+    " Operator Counter: " +this.operatorCounter);
   }
+  // updateTotal(newValue: string){
+
+  //   this.total += newValue;
+  // }
 
   updateOperation(newValue: string){
 
-    this.operations += newValue;
+    if(this.vuelta == 0)
+    {
+
+      this.total = "";
+      this.operations = "";
+
+      this.total += newValue;
+      this.operations += newValue;
+      this.vuelta++;
+      this.mostrarValores();
+    }else{
+
+      this.vuelta++;
+      this.operations += newValue;
+      this.total += newValue;
+      this.mostrarValores();
+    }
   }
 
   getNumber(newOperator: string){
@@ -35,6 +56,7 @@ export class AppComponent {
 
     this.total += number;
 
+    this.vuelta++;
     this.operatorCounter = 0;
     this.floatCounter = 0;
   }
@@ -46,62 +68,65 @@ export class AppComponent {
     this.operator = "";
     this.floatCounter = 0;
     this.operatorCounter = 0;
+    this.vuelta = 0;
   }
 
   keyPressed(value: string) {
 
+    
+    this.mostrarValores();
     switch (value) {
       case '9':
         
         this.updateOperation(value);
-        this.updateTotal(value);
+        // this.updateTotal(value);
         break;
       case '8':
         
         this.updateOperation(value);
-        this.updateTotal(value);
+        // this.updateTotal(value);
         break;
       case '7':
         
         this.updateOperation(value);
-        this.updateTotal(value);
+        // this.updateTotal(value);
         break;
       case '6':
         
         this.updateOperation(value);
-        this.updateTotal(value);
+        // this.updateTotal(value);
         break;
       case '5':
       
         this.updateOperation(value);
-        this.updateTotal(value);
+        // this.updateTotal(value);
         break;
       case '4':
       
         this.updateOperation(value);
-        this.updateTotal(value);
+        // this.updateTotal(value);
         break;
       case '3':
       
         this.updateOperation(value);
-        this.updateTotal(value);
+        // this.updateTotal(value);
         break;
       case '2':
         
         this.updateOperation(value);
-        this.updateTotal(value);
+        // this.updateTotal(value);
         break;
       case '1':
         
         this.updateOperation(value);
-        this.updateTotal(value);
+        // this.updateTotal(value);
         break;
       case '.':
 
-        if((this.floatCounter == 0)&&(this.vuelta == 0)){
+        if((this.floatCounter == 0)&&(this.vuelta > 0)){
 
           this.updateOperation(value);
-          this.updateTotal(value);
+          // this.updateTotal(value);
 
           this.floatCounter++;
           this.vuelta++;
@@ -110,16 +135,16 @@ export class AppComponent {
       case '0':
         
         this.updateOperation(value);
-        this.updateTotal(value);
+        // this.updateTotal(value);
         break;
       case '00':
         
         this.updateOperation(value);
-        this.updateTotal(value);
+        // this.updateTotal(value);
         break;
       case '/':
         
-        if((this.operatorCounter == 0)&&(this.vuelta == 0)){
+        if((this.operatorCounter == 0)&&(this.vuelta > 0)){
 
           this.getNumber(value);
 
@@ -129,7 +154,7 @@ export class AppComponent {
         break;
       case 'X':
 
-        if((this.operatorCounter == 0)&&(this.vuelta == 0)){
+        if((this.operatorCounter == 0)&&(this.vuelta > 0)){
 
           this.getNumber('*');
 
@@ -139,7 +164,7 @@ export class AppComponent {
         break;
       case '-':
 
-        if((this.operatorCounter == 0)&&(this.vuelta == 0)){
+        if((this.operatorCounter == 0)&&(this.vuelta > 0)){
 
           this.getNumber(value);
 
@@ -149,16 +174,14 @@ export class AppComponent {
         break;
       case '+':
 
-        if((this.operatorCounter == 0)&&(this.vuelta == 0)){
+        if((this.operatorCounter == 0)&&(this.vuelta > 0)){
 
           this.getNumber(value);
 
-          this.floatCounter++;
-          this.vuelta++;
         }
         break;
       case '=':
-        if((this.operatorCounter == 0)&&(this.vuelta == 0)){
+        if((this.operatorCounter == 0)&&(this.vuelta > 0)){
 
           this.getNumber(value);
 
