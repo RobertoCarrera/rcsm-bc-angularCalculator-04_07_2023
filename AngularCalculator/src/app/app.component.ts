@@ -8,186 +8,153 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'AngularCalculator';
 
-  operations = "0";
+  operaciones = "0";
   total = "0";
-  operator = "";
-  floatCounter = 0;
+  operator = '';
+
+  inicio_num2 = 0;
+  final_num2 = 0;
+  numMemory = 0;
+
   operatorCounter = 0;
-  vuelta = 0;
+  pulsaciones = 0;
 
   mostrarValores(){
 
-    console.log(" Vueltas: "+this.vuelta+" Total: "+this.total+"Operations: "+this.operations+" Float: "+this.floatCounter+" Operator: "+this.operator+
-    " Operator Counter: " +this.operatorCounter);
+    console.log("Pulsaciones: "+this.pulsaciones+" Operations: "+this.operaciones+" Float counter: "+ "Total: "+this.total+" Operator Counter: "+this.operatorCounter);
   }
-  // updateTotal(newValue: string){
 
-  //   this.total += newValue;
-  // }
+  keyValue(newValue: string){
 
-  updateOperation(newValue: string){
-
-    if(this.vuelta == 0)
+    if(this.pulsaciones == 0)
     {
+      this.total = '';
+      this.operaciones = '';
 
-      this.total = "";
-      this.operations = "";
-
+      this.operaciones += newValue;
       this.total += newValue;
-      this.operations += newValue;
-      this.vuelta++;
-      this.mostrarValores();
     }else{
 
-      this.vuelta++;
-      this.operations += newValue;
+      this.operaciones += newValue;
       this.total += newValue;
-      this.mostrarValores();
     }
   }
 
-  getNumber(newOperator: string){
+  getOperator(newOperator: string){
 
-    let number = "";
+    let num = 0;
+    let total = 0;
 
-    this.operatorCounter++;
-    this.operator = newOperator.charAt(newOperator.length-1);
-    number = newOperator.slice(0,-1);
+    if(this.operatorCounter == 0)
+    {
+      let num = this.operaciones;
 
-    this.total += number;
+      this.operator = newOperator;
+      this.total = num;
+      this.inicio_num2 = this.pulsaciones;
+      this.numMemory = +num;
+      this.operaciones += newOperator;
+  
+      this.operatorCounter++;
+    }else{
 
-    this.vuelta++;
-    this.operatorCounter = 0;
-    this.floatCounter = 0;
+      this.final_num2 = this.pulsaciones;
+      
+      num = +this.operaciones.slice(this.inicio_num2,this.final_num2);
+      total = +this.total;
+      alert("Num = "+num);
+      alert("Total = "+total);
+
+      total += num;
+
+      this.total = ''+total;
+
+    }
+
   }
 
-  clearAll() {
+  clearAll(){
 
-    this.operations = "0";
-    this.total = "0";
-    this.operator = "";
-    this.floatCounter = 0;
-    this.operatorCounter = 0;
-    this.vuelta = 0;
+    this.operaciones = '0';
+    this.total = '0';
+
   }
 
   keyPressed(value: string) {
 
-    
+    console.log("Valor introducido: "+value);
     this.mostrarValores();
     switch (value) {
       case '9':
         
-        this.updateOperation(value);
-        // this.updateTotal(value);
+        this.keyValue(value);
+        this.pulsaciones++;
         break;
       case '8':
         
-        this.updateOperation(value);
-        // this.updateTotal(value);
+        this.keyValue(value);
+        this.pulsaciones++;
         break;
       case '7':
         
-        this.updateOperation(value);
-        // this.updateTotal(value);
+        this.keyValue(value);
+        this.pulsaciones++;
         break;
       case '6':
         
-        this.updateOperation(value);
-        // this.updateTotal(value);
+        this.keyValue(value);
+        this.pulsaciones++;
         break;
       case '5':
       
-        this.updateOperation(value);
-        // this.updateTotal(value);
+        this.keyValue(value);
+        this.pulsaciones++;
         break;
       case '4':
       
-        this.updateOperation(value);
-        // this.updateTotal(value);
+        this.keyValue(value);
+        this.pulsaciones++;
         break;
       case '3':
       
-        this.updateOperation(value);
-        // this.updateTotal(value);
+        this.keyValue(value);
+        this.pulsaciones++;
         break;
       case '2':
         
-        this.updateOperation(value);
-        // this.updateTotal(value);
+        this.keyValue(value);
+        this.pulsaciones++;
         break;
       case '1':
         
-        this.updateOperation(value);
-        // this.updateTotal(value);
+        this.keyValue(value);
+        this.pulsaciones++;
         break;
       case '.':
 
-        if((this.floatCounter == 0)&&(this.vuelta > 0)){
-
-          this.updateOperation(value);
-          // this.updateTotal(value);
-
-          this.floatCounter++;
-          this.vuelta++;
-        }
         break;
       case '0':
         
-        this.updateOperation(value);
-        // this.updateTotal(value);
+        this.keyValue(value);
         break;
       case '00':
         
-        this.updateOperation(value);
-        // this.updateTotal(value);
+        this.keyValue(value);
         break;
       case '/':
-        
-        if((this.operatorCounter == 0)&&(this.vuelta > 0)){
 
-          this.getNumber(value);
-
-          this.floatCounter++;
-          this.vuelta++;
-        }
         break;
       case 'X':
 
-        if((this.operatorCounter == 0)&&(this.vuelta > 0)){
-
-          this.getNumber('*');
-
-          this.floatCounter++;
-          this.vuelta++;
-        }
         break;
       case '-':
 
-        if((this.operatorCounter == 0)&&(this.vuelta > 0)){
-
-          this.getNumber(value);
-
-          this.floatCounter++;
-          this.vuelta++;
-        }
         break;
       case '+':
-
-        if((this.operatorCounter == 0)&&(this.vuelta > 0)){
-
-          this.getNumber(value);
-
-        }
+        this.getOperator(value);
         break;
       case '=':
-        if((this.operatorCounter == 0)&&(this.vuelta > 0)){
 
-          this.getNumber(value);
-
-          this.floatCounter++;
-          this.vuelta++;
-        }
         break;
       default:
 
